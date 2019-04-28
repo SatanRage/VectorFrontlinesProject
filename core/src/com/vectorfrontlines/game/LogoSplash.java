@@ -1,18 +1,24 @@
 package com.vectorfrontlines.game;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;*
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
 
 
-public class LogoSplash {
+//TODO read the documentation about scene menagemant and class "screen" below some links
+//splash screen tutorial: http://www.pixnbgames.com/blog/libgdx/how-to-make-a-splash-screen-in-libgdx/
+//scene menagemant libGDX: http://www.pixnbgames.com/blog/libgdx/how-to-manage-screens-in-libgdx/
+
+public class LogoSplash //implements Screen
+{
 
 
 
@@ -34,11 +40,14 @@ public class LogoSplash {
         if(LogoSpreadSheetLoader()) {}
         else
         if(GifToAnimation()) {}
+        else{pr("no image to load");}
 
         camera = new OrthographicCamera();
         viewport =new FitViewport(logoWidth,logoHeight,camera);
         viewport.apply();
+        viewport.update(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
         camera.position.set(camera.viewportWidth/2,camera.viewportHeight/2,0);
+
     }
 
     public void render() {
@@ -60,6 +69,7 @@ public class LogoSplash {
 
         batch.end();
     }
+
     public void update(int width, int height)
     {
         viewport.update(width,height);
@@ -112,6 +122,10 @@ public class LogoSplash {
     }catch(Exception e){//e.printStackTrace();
         return false;}
 
+    }
+    private void pr(String string)
+    {
+        System.out.println(string);
     }
 }
 

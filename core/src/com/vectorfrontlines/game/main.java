@@ -7,34 +7,34 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class main extends ApplicationAdapter {
-	LogoSplash logoSplash;
+	menu menu_Obj;
 
 	@Override
 	public void create () {
 		//object initialisation
-		logoSplash = new LogoSplash();
+		 menu_Obj=new menu();
 	}
 
 	@Override
 	public void render () {
-
+		menu_Obj.GameSectionsHandler();
 		//object configurations
 		//game logic
 		//animation configuration
 		//animation logic
-		logoSplash.render();
+
 	}
 
 	@Override
 	public void dispose () {
 		//states savings
 		//object cleaning
-		logoSplash.dispose();
+
 	}
 
 	@Override
 	public void resize(int width, int height) {
-		logoSplash.update(width,height);
+		menu_Obj.update(width,height);
 	}
 }
 
